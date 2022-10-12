@@ -1,5 +1,5 @@
 terraform {
-  backend "iam" {
+  backend "s3" {
     key            = "global/iam/terraform.tfstate"
   }
 }
