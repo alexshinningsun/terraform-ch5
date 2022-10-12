@@ -1,7 +1,7 @@
 # terraform-ch5
-## Task 1: Module Basics
+## Task 1: Loops with the count Parameter
 
-## Task 2: Modules + Environments isolation
+## Task 2: 
 1. be aware of remote backend key should put in each sub folder
 1. general backend config put to backend.hcl
 1. use module variables ![](./Screenshot.png)
