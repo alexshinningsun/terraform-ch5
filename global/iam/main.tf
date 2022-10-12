@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "global_iam" {
-  source = "github.com/alexshinningsun/terraform-ch5/modules//global/iam?ref=v0.0.1"
+  source = "github.com/alexshinningsun/terraform-ch5/modules//global/iam?ref=v1.0.0"
 
   #cluster_name           = ""
 }
