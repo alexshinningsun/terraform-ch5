@@ -1,7 +1,9 @@
 # terraform-ch5
 ## Task 1: Loops with the count Parameter
 
-## Task 2: 
+## Task 2: Loop with for_each
+
+
 1. be aware of remote backend key should put in each sub folder
 1. general backend config put to backend.hcl
 1. use module variables ![](./Screenshot.png)
