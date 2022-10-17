@@ -11,6 +11,9 @@ module "webserver_cluster" {
   instance_type = "t2.micro"
   max_size = 4
   min_size = 1
+  custom_tags = {
+    "author" = "alex"
+  }
 }
 
 resource "aws_autoscaling_schedule" "scale_out_during_business_hours" {

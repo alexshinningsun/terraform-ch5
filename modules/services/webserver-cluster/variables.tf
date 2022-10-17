@@ -34,3 +34,10 @@ variable "max_size" {
   description = "The maximum number of EC2 Instances in the ASG"
   type        = number
 }
+
+#================================= for_loop example
+variable "custom_tags" {
+  description = "custom tags for ec2"
+  type = map(string)
+  
+}
