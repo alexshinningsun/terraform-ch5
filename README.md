@@ -26,7 +26,7 @@
 1. Inline blocks and File paths
 
 # Essential Command
-1. `terraform init -backend-config ../../../backend.hcl`
+1. `terraform init -backend-config ~/terraform-ch5/backend.hcl`
 1. `terraform plan`
 1. `terraform apply`
 1. `terraform output`
