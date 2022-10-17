@@ -3,6 +3,14 @@
 
 ## Task 2: Loop with for_each
 
+## Task 3: Loop with expression
+- list to list
+- map to list
+- list to map
+- map to map
+
+## Task 4: Loops with the for String Directive
+    "%{ for <ITEM> in <COLLECTION> }<BODY>%{ endfor }"
 
 1. be aware of remote backend key should put in each sub folder
 1. general backend config put to backend.hcl
