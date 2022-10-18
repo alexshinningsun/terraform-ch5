@@ -41,3 +41,9 @@ variable "custom_tags" {
   type = map(string)
   
 }
+
+# ============= Task 5: If-statements with the count parameter
+variable "enable_autoscaling" {
+  description = "If set to true, enable auto scaling"
+  type        = bool
+}

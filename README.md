@@ -14,7 +14,8 @@
     %{ for <INDEX>, <ITEM> in <COLLECTION> }<BODY>%{ endfor }
 
 ## Task 5: Conditionals
-
+- If-statements with the count parameter
+- If-else-statements with the count parameter
 
 
 1. be aware of remote backend key should put in each sub folder
