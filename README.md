@@ -17,6 +17,8 @@
 - If-statements with the count parameter
 - If-else-statements with the count parameter: E.G. only read access or both read and write access
 - Conditionals with for_each and for Expressions
+- Conditionals with the if String Directive
+
 
 1. be aware of remote backend key should put in each sub folder
 1. general backend config put to backend.hcl

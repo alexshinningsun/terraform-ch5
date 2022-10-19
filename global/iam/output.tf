@@ -25,7 +25,16 @@ output "bios"{
 output "heros"{
   value = {for name, role in var.hero_thousand_faces : "${name}" => "${role}"}
 }
+
 // ============ Task 3 END
+// TASK: Conditionals with the if String Directive
+output "for_directive_index_if"{
+  value = <<EOF
+%{~ for i, name in var.user_names ~} 
+${name}%{if i< length(var.user_names)-1 }, %{ else }.%{endif}
+%{~ endfor ~}
+  EOF
+}
 // ============ Task 4: Loops with the for String Directive
 output "for_directive" {
   value = "%{for name in var.user_names} ${name}, %{endfor}"
