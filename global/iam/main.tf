@@ -7,5 +7,6 @@ module "global_iam" {
   source = "../../modules/global/iam"
   for_each = toset(var.user_names)
   user_name = each.value
+  cloudwatch_full_access_for_neo = true
   #cluster_name           = ""
 }
