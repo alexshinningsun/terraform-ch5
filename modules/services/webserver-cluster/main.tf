@@ -27,11 +27,12 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_launch_configuration" "example" {
-  image_id        = "ami-0fb653ca2d3203ac1"
+  image_id        = var.ami
   instance_type   = var.instance_type
   security_groups = [aws_security_group.instance.id]
 
   user_data = templatefile("${path.module}/user-data.sh", {
+    server_text = var.server_text
     server_port = var.server_port
     db_address  = data.terraform_remote_state.db.outputs.db_module_output.address
     db_port     = data.terraform_remote_state.db.outputs.db_module_output.port
@@ -42,6 +43,8 @@ resource "aws_launch_configuration" "example" {
 }
 
 resource "aws_autoscaling_group" "example" {
+  name = "${var.cluster_name}-${aws_launch_configuration.example.name}"
+
   launch_configuration = aws_launch_configuration.example.name
   vpc_zone_identifier  = data.aws_subnets.default.ids # 3 now we can get the default VPC's subnet IDs
   
@@ -50,8 +53,17 @@ resource "aws_autoscaling_group" "example" {
 
   min_size = var.min_size
   max_size = var.max_size
-  desired_capacity = 3
 
+  # Wait for at least this many instances to pass health checks before
+  # considering the ASG deployment complete
+  min_elb_capacity = var.min_size
+
+  # When replacing this ASG, create the replacement first, and only delete the
+  # original after
+  lifecycle {
+    create_before_destroy = true
+  }
+  
   tag {
     key = "name"
     value = "${var.cluster_name}-asg-example"
@@ -157,7 +169,7 @@ resource "aws_lb_listener_rule" "asg" {
 # ========= schduling ==========
 resource "aws_autoscaling_schedule" "scale_out_during_business_hours" {
   count = var.enable_autoscaling ? 1:0
-  autoscaling_group_name = module.webserver_cluster.asg_name
+  autoscaling_group_name = aws_autoscaling_group.example.name
   scheduled_action_name = "scale-out-during-business-hours"
   min_size = 2
   max_size = 10
@@ -167,7 +179,7 @@ resource "aws_autoscaling_schedule" "scale_out_during_business_hours" {
 
 resource "aws_autoscaling_schedule" "scale_in_at_night" {
   count = var.enable_autoscaling ? 1:0
-  autoscaling_group_name = module.webserver_cluster.asg_name
+  autoscaling_group_name = aws_autoscaling_group.example.name
   scheduled_action_name = "scale-in-at-night"
   min_size = 2
   max_size = 10

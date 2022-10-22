@@ -15,6 +15,9 @@ module "webserver_cluster" {
     "author" = "alex"
   }
   enable_autoscaling = true
+
+  ami         = "ami-0fb653ca2d3203ac1"
+  server_text = "New server text"
 }
 
 
