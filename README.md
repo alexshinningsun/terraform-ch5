@@ -18,15 +18,8 @@
 - If-else-statements with the count parameter: E.G. only read access or both read and write access
 - Conditionals with for_each and for Expressions
 - Conditionals with the if String Directive
+- Zero Down time
 
-
-1. be aware of remote backend key should put in each sub folder
-1. general backend config put to backend.hcl
-1. use module variables ![](./Screenshot.png)
-    ref: https://stackoverflow.com/questions/61587712/cannot-get-the-outputs-when-terraform-output-is-run 
-1. Add local variables in module
-1. Module Output
-1. Inline blocks and File paths
 
 # Essential Command
 1. `terraform init -backend-config ~/terraform-ch5/backend.hcl`
